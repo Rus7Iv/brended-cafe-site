@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 
 import breadImg from '@/assets/bread.png'
@@ -99,7 +100,9 @@ export const AboutSection = () => {
             муку, чистую воду и щепотку морской соли. Никаких ускорителей,
             только терпение и любовь к ремеслу.
           </p>
-          <StoryButton>Читать историю</StoryButton>
+          <StoryButton as={Link} to="/history">
+            Читать историю
+          </StoryButton>
         </TextBlock>
         <ImageWrapper>
           <img src={breadImg} alt="Artisanal Bread" />

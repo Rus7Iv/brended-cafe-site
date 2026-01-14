@@ -118,14 +118,24 @@ export const Footer = () => {
         <FooterTop>
           <FooterBrand>
             <FooterLogo>Хлеб & Соль</FooterLogo>
-            <p>ул. Ремесленная, 12, Москва</p>
+            <p>набережная г. Ижевск</p>
             <p>+7 (999) 000-00-00</p>
-            <p>daily 08:00 - 22:00</p>
+            <p>08:00 - 22:00</p>
           </FooterBrand>
           <FooterLinks>
-            <a href="#">Дзен</a>
-            <a href="#">Telegram</a>
-            <a href="#">VK</a>
+            <a href="https://dzen.ru/" target="_blank" rel="noreferrer">
+              Дзен
+            </a>
+            <a
+              href="https://web.telegram.org/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Telegram
+            </a>
+            <a href="https://vk.com/" target="_blank" rel="noreferrer">
+              VK
+            </a>
           </FooterLinks>
         </FooterTop>
         <FooterDivider />

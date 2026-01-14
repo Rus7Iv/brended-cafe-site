@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { Logo } from '@/components/atoms/Logo'
@@ -200,7 +201,9 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <HeaderInner $scrolled={scrolled}>
-        <Logo>Хлеб & Соль</Logo>
+        <Logo as={Link} to="/">
+          Хлеб & Соль
+        </Logo>
         <Nav id="primary-navigation" $scrolled={scrolled} $open={menuOpen}>
           <a href="#about" onClick={handleNavClick}>
             О нас

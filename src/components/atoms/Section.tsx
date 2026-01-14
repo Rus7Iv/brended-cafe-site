@@ -6,6 +6,6 @@ export const Section = styled.section`
   margin: 0 auto;
 
   @media ${({ theme }) => theme.media.upMd} {
-    padding: 8rem 4rem;
+    padding: 6rem 4rem;
   }
 `
