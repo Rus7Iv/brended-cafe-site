@@ -1,3 +1,17 @@
+const breakpoints = {
+  sm: 640,
+  md: 768,
+  lg: 900,
+}
+
+const media = {
+  upSm: `(min-width: ${breakpoints.sm}px)`,
+  upMd: `(min-width: ${breakpoints.md}px)`,
+  upLg: `(min-width: ${breakpoints.lg}px)`,
+  downSm: `(max-width: ${breakpoints.sm}px)`,
+  downMd: `(max-width: ${breakpoints.md - 1}px)`,
+}
+
 export const theme = {
   colors: {
     primary: '#D4A373', // Golden Crust
@@ -13,4 +27,6 @@ export const theme = {
     heading: "'Playfair Display', serif",
     body: "'Outfit', sans-serif",
   },
+  breakpoints,
+  media,
 }

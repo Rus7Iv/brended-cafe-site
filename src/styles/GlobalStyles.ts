@@ -50,7 +50,7 @@ const GlobalStyles = createGlobalStyle`
     display: block;
   }
 
-  @media (max-width: 767px) {
+  @media ${({ theme }) => theme.media.downMd} {
     * {
       -webkit-tap-highlight-color: transparent;
     }

@@ -29,7 +29,7 @@ const Section = styled.section`
   max-width: 1400px;
   margin: 0 auto;
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.media.upMd} {
     padding: 8rem 4rem;
   }
 `
@@ -48,7 +48,7 @@ const Header = styled.header`
     transform 0.4s ease,
     opacity 0.4s ease;
 
-  @media (max-width: 640px) {
+  @media ${({ theme }) => theme.media.downSm} {
     top: 0.75rem;
     padding: 0 1rem;
   }
@@ -96,7 +96,7 @@ const Nav = styled.nav<{ $scrolled: boolean; $open: boolean }>`
   display: flex;
   align-items: center;
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.media.upMd} {
     gap: 0.35rem;
     padding: 0.35rem;
     border-radius: 999px;
@@ -107,7 +107,7 @@ const Nav = styled.nav<{ $scrolled: boolean; $open: boolean }>`
         $scrolled ? 'rgba(44, 44, 44, 0.08)' : 'rgba(255, 255, 255, 0.2)'};
   }
 
-  @media (max-width: 767px) {
+  @media ${({ theme }) => theme.media.downMd} {
     position: absolute;
     top: calc(100% + 0.75rem);
     left: 0;
@@ -216,7 +216,7 @@ const MenuButton = styled.button<{ $scrolled: boolean; $open: boolean }>`
     transform: ${({ $open }) => ($open ? 'translateY(-6px)' : 'none')};
   }
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.media.upMd} {
     display: none;
   }
 `
@@ -275,7 +275,7 @@ const Title = styled.h1`
   color: white;
   animation: ${fadeIn} 1s ease 0.4s backwards;
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.media.upMd} {
     font-size: 6rem;
   }
 `
@@ -307,7 +307,7 @@ const SplitSection = styled(Section)`
   gap: 3rem;
   align-items: center;
 
-  @media (min-width: 900px) {
+  @media ${({ theme }) => theme.media.upLg} {
     grid-template-columns: 1fr 1fr;
     gap: 6rem;
   }
@@ -486,7 +486,7 @@ const FooterTop = styled.div`
   gap: 2rem;
   align-items: start;
 
-  @media (min-width: 900px) {
+  @media ${({ theme }) => theme.media.upLg} {
     grid-template-columns: 2fr 1fr;
   }
 `
