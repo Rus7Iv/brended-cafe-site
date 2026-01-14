@@ -35,62 +35,189 @@ const Section = styled.section`
 `
 
 // HEADER
-const Header = styled.header<{ $scrolled: boolean }>`
+const Header = styled.header`
   position: fixed;
-  top: 0;
+  top: 1.25rem;
   left: 0;
   width: 100%;
-  padding: 1.5rem 2rem;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 0 1.5rem;
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+
+  @media (max-width: 640px) {
+    top: 0.75rem;
+    padding: 0 1rem;
+  }
+`
+
+const HeaderInner = styled.div<{ $scrolled: boolean }>`
+  position: relative;
+  width: min(1200px, 100%);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 100;
-  transition: all 0.4s ease;
-  background-color: ${({ $scrolled }) =>
-    $scrolled ? 'rgba(250, 250, 248, 0.95)' : 'transparent'};
-  backdrop-filter: ${({ $scrolled }) => ($scrolled ? 'blur(10px)' : 'none')};
+  gap: 1.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  background: ${({ $scrolled }) =>
+    $scrolled
+      ? 'rgba(250, 250, 248, 0.9)'
+      : 'linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04))'};
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid
+    ${({ $scrolled }) =>
+      $scrolled ? 'rgba(44, 44, 44, 0.12)' : 'rgba(255, 255, 255, 0.25)'};
   box-shadow: ${({ $scrolled }) =>
-    $scrolled ? '0 5px 20px rgba(0,0,0,0.05)' : 'none'};
+    $scrolled
+      ? '0 12px 30px rgba(0, 0, 0, 0.08)'
+      : '0 20px 45px rgba(0, 0, 0, 0.25)'};
   color: ${({ $scrolled, theme }) =>
-    $scrolled ? theme.colors.secondary : '#fff'};
+    $scrolled ? theme.colors.secondary : theme.colors.white};
+  transition:
+    background 0.4s ease,
+    box-shadow 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease;
 `
 
 const Logo = styled.div`
   font-family: ${({ theme }) => theme.fonts.heading};
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
 `
 
-const Nav = styled.nav`
-  display: none;
+const Nav = styled.nav<{ $scrolled: boolean; $open: boolean }>`
+  display: flex;
+  align-items: center;
+
   @media (min-width: 768px) {
-    display: flex;
-    gap: 2rem;
+    gap: 0.35rem;
+    padding: 0.35rem;
+    border-radius: 999px;
+    background: ${({ $scrolled }) =>
+      $scrolled ? 'rgba(44, 44, 44, 0.06)' : 'rgba(255, 255, 255, 0.12)'};
+    border: 1px solid
+      ${({ $scrolled }) =>
+        $scrolled ? 'rgba(44, 44, 44, 0.08)' : 'rgba(255, 255, 255, 0.2)'};
+  }
+
+  @media (max-width: 767px) {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    border-radius: 1.25rem;
+    background: ${({ $scrolled }) =>
+      $scrolled ? 'rgba(250, 250, 248, 0.98)' : 'rgba(20, 20, 20, 0.75)'};
+    border: 1px solid
+      ${({ $scrolled }) =>
+        $scrolled ? 'rgba(44, 44, 44, 0.12)' : 'rgba(255, 255, 255, 0.22)'};
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    opacity: ${({ $open }) => ($open ? 1 : 0)};
+    pointer-events: ${({ $open }) => ($open ? 'auto' : 'none')};
+    transform: translateY(${({ $open }) => ($open ? '0' : '-6px')});
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
   }
 
   a {
     font-family: ${({ theme }) => theme.fonts.body};
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-weight: 600;
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.18em;
+    padding: 0.6rem 0.95rem;
+    border-radius: 999px;
+    transition:
+      background 0.3s ease,
+      color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  a:hover {
+    background: ${({ $scrolled, theme }) =>
+      $scrolled ? theme.colors.accent : 'rgba(255, 255, 255, 0.2)'};
+    color: ${({ $scrolled, theme }) =>
+      $scrolled ? theme.colors.secondary : theme.colors.white};
+    transform: translateY(-1px);
+  }
+`
+
+const MenuButton = styled.button<{ $scrolled: boolean; $open: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid
+    ${({ $scrolled }) =>
+      $scrolled ? 'rgba(44, 44, 44, 0.12)' : 'rgba(255, 255, 255, 0.3)'};
+  background: ${({ $scrolled }) =>
+    $scrolled ? 'rgba(44, 44, 44, 0.05)' : 'rgba(255, 255, 255, 0.12)'};
+  color: inherit;
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  span {
+    display: inline-flex;
+    width: 16px;
+    height: 2px;
+    background: currentColor;
     position: relative;
+  }
 
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: currentColor;
-      transition: width 0.3s ease;
-    }
+  span::before,
+  span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 16px;
+    height: 2px;
+    background: currentColor;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
 
-    &:hover::after {
-      width: 100%;
-    }
+  span::before {
+    top: -6px;
+    opacity: ${({ $open }) => ($open ? 0 : 1)};
+    transform: ${({ $open }) => ($open ? 'translateY(6px)' : 'none')};
+  }
+
+  span::after {
+    top: 6px;
+    opacity: ${({ $open }) => ($open ? 0 : 1)};
+    transform: ${({ $open }) => ($open ? 'translateY(-6px)' : 'none')};
+  }
+
+  @media (min-width: 768px) {
+    display: none;
   }
 `
 
@@ -303,36 +430,124 @@ const ImageBanner = styled.div`
     z-index: 1;
     font-size: 3rem;
     border-bottom: 2px solid ${({ theme }) => theme.colors.accent};
-    padding-bottom: 10px;
+    padding: 0 10px 10px;
+    text-align: center;
   }
 `
 
 // FOOTER
 const Footer = styled.footer`
-  background: ${({ theme }) => theme.colors.secondary};
-  color: white;
-  padding: 4rem 2rem;
-  text-align: center;
+  background: radial-gradient(
+    120% 120% at 15% 0%,
+    rgba(230, 221, 196, 0.22) 0%,
+    rgba(44, 44, 44, 1) 55%
+  );
+  color: ${({ theme }) => theme.colors.white};
+  padding: 6rem 2rem 3rem;
+  position: relative;
+  overflow: hidden;
 
-  h2 {
-    color: white;
-    margin-bottom: 2rem;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -40% 0 auto 0;
+    height: 60%;
+    background: radial-gradient(
+      circle,
+      rgba(230, 221, 196, 0.18) 0%,
+      transparent 65%
+    );
+    pointer-events: none;
   }
 
   p {
-    color: #aaa;
-    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.72);
   }
 
   .copy {
-    margin-top: 3rem;
-    font-size: 0.8rem;
-    opacity: 0.5;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.6);
   }
+`
+
+const FooterInner = styled.div`
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+`
+
+const FooterTop = styled.div`
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+
+  @media (min-width: 900px) {
+    grid-template-columns: 2fr 1fr;
+  }
+`
+
+const FooterBrand = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+`
+
+const FooterLogo = styled(Logo)`
+  font-size: 2rem;
+`
+
+const FooterLinks = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-start;
+
+  a {
+    padding: 0.5rem 0.95rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: ${({ theme }) => theme.colors.white};
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      background 0.3s ease;
+  }
+
+  a:hover {
+    transform: translateY(-2px);
+    border-color: ${({ theme }) => theme.colors.accent};
+    background: rgba(230, 221, 196, 0.2);
+  }
+`
+
+const FooterDivider = styled.div`
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(230, 221, 196, 0.45),
+    rgba(255, 255, 255, 0)
+  );
+`
+
+const FooterBottom = styled.div`
+  display: flex;
+  justify-content: center;
+  text-align: center;
 `
 
 const HomePage = () => {
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -342,15 +557,38 @@ const HomePage = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const toggleMenu = () => setMenuOpen((prev) => !prev)
+  const handleNavClick = () => setMenuOpen(false)
+
   return (
     <Container>
-      <Header $scrolled={scrolled}>
-        <Logo>Хлеб & Соль</Logo>
-        <Nav>
-          <a href="#about">О нас</a>
-          <a href="#menu">Меню</a>
-          <a href="#contact">Контакты</a>
-        </Nav>
+      <Header>
+        <HeaderInner $scrolled={scrolled}>
+          <Logo>Хлеб & Соль</Logo>
+          <Nav id="primary-navigation" $scrolled={scrolled} $open={menuOpen}>
+            <a href="#about" onClick={handleNavClick}>
+              О нас
+            </a>
+            <a href="#menu" onClick={handleNavClick}>
+              Меню
+            </a>
+            <a href="#contact" onClick={handleNavClick}>
+              Контакты
+            </a>
+          </Nav>
+          <MenuButton
+            type="button"
+            $scrolled={scrolled}
+            $open={menuOpen}
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
+            aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
+            onClick={toggleMenu}
+          >
+            <span />
+            Меню
+          </MenuButton>
+        </HeaderInner>
       </Header>
 
       <HeroSection>
@@ -463,27 +701,24 @@ const HomePage = () => {
       </Section>
 
       <Footer id="contact">
-        <Logo style={{ fontSize: '2rem', marginBottom: '1rem' }}>
-          Хлеб & Соль
-        </Logo>
-        <p>ул. Ремесленная, 12, Москва</p>
-        <p>+7 (999) 000-00-00</p>
-        <p>daily 08:00 - 22:00</p>
-
-        <div
-          style={{
-            display: 'flex',
-            gap: '1rem',
-            justifyContent: 'center',
-            marginTop: '2rem',
-          }}
-        >
-          <a href="#">Instagram</a>
-          <a href="#">Telegram</a>
-          <a href="#">VK</a>
-        </div>
-
-        <div className="copy">© 2026 Хлеб & Соль. Все права защищены.</div>
+        <FooterInner>
+          <FooterTop>
+            <FooterBrand>
+              <FooterLogo>Хлеб & Соль</FooterLogo>
+              <p>ул. Ремесленная, 12, Москва</p>
+              <p>+7 (999) 000-00-00</p>
+              <p>08:00 - 22:00</p>
+            </FooterBrand>
+            <FooterLinks>
+              <a href="#">Telegram</a>
+              <a href="#">VK</a>
+            </FooterLinks>
+          </FooterTop>
+          <FooterDivider />
+          <FooterBottom>
+            <div className="copy">© 2026 Хлеб & Соль. Все права защищены.</div>
+          </FooterBottom>
+        </FooterInner>
       </Footer>
     </Container>
   )

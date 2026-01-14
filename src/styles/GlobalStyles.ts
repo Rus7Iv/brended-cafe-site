@@ -49,6 +49,18 @@ const GlobalStyles = createGlobalStyle`
     max-width: 100%;
     display: block;
   }
+
+  @media (max-width: 767px) {
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    *:focus,
+    *:active {
+      outline: none;
+      box-shadow: none;
+    }
+  }
 `
 
 export default GlobalStyles
