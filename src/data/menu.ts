@@ -7,6 +7,7 @@ export type MenuItem = {
   title: string
   description: string
   price: string
+  portion?: string
   image: string
   category: 'coffee' | 'bakery' | 'breakfast' | 'special'
   tags?: string[]
@@ -20,24 +21,27 @@ export const menuItems: MenuItem[] = [
     description:
       'Классический эспрессо с домашней карамелью и хлопьями морской соли.',
     price: '250 ₽',
+    portion: '250 мл.',
     image: coffeeImg,
     category: 'coffee',
-    tags: ['hit'],
+    tags: ['Хит', 'Сезонно'],
   },
   {
     id: 'c2',
     title: 'Латте "Пряная Тыква"',
     description: 'Сезонный хит с натуральным тыквенным пюре и специями корицы.',
     price: '290 ₽',
+    portion: '300 мл.',
     image: coffeeImg,
     category: 'coffee',
-    tags: ['seasonal'],
+    tags: ['Сезонно'],
   },
   {
     id: 'c3',
     title: 'Флэт Уайт',
     description: 'Двойной эспрессо с тонкой молочной пеной. Насыщенный вкус.',
     price: '220 ₽',
+    portion: '200 мл.',
     image: coffeeImg,
     category: 'coffee',
   },
@@ -46,6 +50,7 @@ export const menuItems: MenuItem[] = [
     title: 'Раф "Цитрусовый"',
     description: 'Сливочный кофе с цедрой апельсина и ванильным сахаром.',
     price: '310 ₽',
+    portion: '280 мл.',
     image: coffeeImg,
     category: 'coffee',
   },
@@ -57,9 +62,10 @@ export const menuItems: MenuItem[] = [
     description:
       'Наш фирменный хлеб на закваске, сливочный сыр, авокадо и слабосоленый лосось.',
     price: '350 ₽',
+    portion: '140 гр.',
     image: breadImg,
     category: 'bakery',
-    tags: ['popular'],
+    tags: ['Популярный'],
   },
   {
     id: 'b2',
@@ -67,6 +73,7 @@ export const menuItems: MenuItem[] = [
     description:
       'Два яйца пашот, поджаренный бекон, томаты и корзина свежего хлеба.',
     price: '450 ₽',
+    portion: '170 гр.',
     image: breadImg,
     category: 'bakery',
   },
@@ -76,6 +83,7 @@ export const menuItems: MenuItem[] = [
     description:
       'Буханка темного хлеба с тмином и кориандром. Ферментация 24 часа.',
     price: '180 ₽',
+    portion: '95 гр.',
     image: breadImg,
     category: 'bakery',
   },
@@ -87,9 +95,10 @@ export const menuItems: MenuItem[] = [
     description:
       'Воздушное слоеное тесто, французское масло и щедрая миндальная начинка.',
     price: '180 ₽',
+    portion: '120 гр.',
     image: pastryImg,
     category: 'breakfast', // Grouping pastries into breakfast/dessert for now or separate
-    tags: ['bestseller'],
+    tags: ['бестселлер'],
   },
   {
     id: 'p2',
@@ -97,6 +106,7 @@ export const menuItems: MenuItem[] = [
     description:
       'Гибрид круассана и маффина с нежнейшим заварным кремом внутри.',
     price: '220 ₽',
+    portion: '130 гр.',
     image: pastryImg,
     category: 'breakfast',
   },
@@ -105,6 +115,7 @@ export const menuItems: MenuItem[] = [
     title: 'Даниш с Ягодами',
     description: 'Слойка с заварным кремом и сезонными лесными ягодами.',
     price: '240 ₽',
+    portion: '150 гр.',
     image: pastryImg,
     category: 'breakfast',
   },
