@@ -1,8 +1,11 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { Button } from '@/components/atoms/Button'
 import { Section } from '@/components/atoms/Section'
 import { SectionTitle } from '@/components/atoms/SectionTitle'
 import { MenuCard } from '@/components/molecules/MenuCard'
+import { menuItems } from '@/data/menu'
 
 const MenuGrid = styled.div`
   display: grid;
@@ -18,45 +21,20 @@ const MenuDescription = styled.p`
   color: #666;
 `
 
-const menuItems = [
-  {
-    price: '250 ₽',
-    title: 'Капучино "Соленая Карамель"',
-    description:
-      'Классический эспрессо с домашней карамелью и хлопьями морской соли.',
-  },
-  {
-    price: '180 ₽',
-    title: 'Миндальный Круассан',
-    description:
-      'Воздушное слоеное тесто, французское масло и щедрая миндальная начинка.',
-  },
-  {
-    price: '350 ₽',
-    title: 'Тартин с Лососем',
-    description:
-      'Наш фирменный хлеб на закваске, сливочный сыр, авокадо и слабосоленый лосось.',
-  },
-  {
-    price: '290 ₽',
-    title: 'Латте "Пряная Тыква"',
-    description: 'Сезонный хит с натуральным тыквенным пюре и специями корицы.',
-  },
-  {
-    price: '220 ₽',
-    title: 'Краффин с Ванилью',
-    description:
-      'Гибрид круассана и маффина с нежнейшим заварным кремом внутри.',
-  },
-  {
-    price: '450 ₽',
-    title: 'Завтрак Пекаря',
-    description:
-      'Два яйца пашот, поджаренный бекон, томаты и корзина свежего хлеба.',
-  },
-]
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+`
+
+const ViewAllButton = styled(Button)`
+  min-width: 200px;
+`
 
 export const MenuSection = () => {
+  // Take only the first 3 items (or specific popular ones) for the teaser
+  const teaserItems = menuItems.slice(0, 3)
+
   return (
     <Section id="menu">
       <SectionTitle>Зимнее Меню</SectionTitle>
@@ -64,15 +42,20 @@ export const MenuSection = () => {
         Согревающие напитки и свежая выпечка, созданные для уютных моментов.
       </MenuDescription>
       <MenuGrid>
-        {menuItems.map((item) => (
+        {teaserItems.map((item) => (
           <MenuCard
-            key={item.title}
+            key={item.id}
             price={item.price}
             title={item.title}
             description={item.description}
           />
         ))}
       </MenuGrid>
+      <ButtonWrapper>
+        <ViewAllButton as={Link} to="/menu">
+          Смотреть всё меню
+        </ViewAllButton>
+      </ButtonWrapper>
     </Section>
   )
 }

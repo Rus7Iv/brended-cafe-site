@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import HistoryPage from '@/pages/HistoryPage'
 import HomePage from '@/pages/HomePage'
+import MenuPage from '@/pages/MenuPage'
 
 const routes = [
   {
@@ -11,6 +12,10 @@ const routes = [
   {
     path: '/history',
     element: <HistoryPage />,
+  },
+  {
+    path: '/menu',
+    element: <MenuPage />,
   },
 ]
 

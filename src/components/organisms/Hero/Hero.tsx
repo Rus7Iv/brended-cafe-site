@@ -74,7 +74,9 @@ export const Hero = () => {
       <HeroContent>
         <HeroSubtitle>Ремесленная пекарня</HeroSubtitle>
         <HeroTitle>Хлеб & Соль</HeroTitle>
-        <HeroButton>Смотреть Меню</HeroButton>
+        <HeroButton as="a" href="#menu">
+          Смотреть Меню
+        </HeroButton>
       </HeroContent>
     </HeroWrapper>
   )
