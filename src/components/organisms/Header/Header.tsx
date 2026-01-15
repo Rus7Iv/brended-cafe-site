@@ -30,7 +30,7 @@ const HeaderInner = styled.div<{ $scrolled: boolean }>`
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
-  padding: 0.65rem 1.25rem;
+  padding: 0.65rem 0.65rem 0.65rem 1.25rem;
   border-radius: 999px;
   background: ${({ $scrolled }) =>
     $scrolled

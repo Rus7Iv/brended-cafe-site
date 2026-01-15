@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 
-import breadImg from '@/assets/bread.png'
+import breadImg from '@/assets/bread.webp'
 import { Button } from '@/components/atoms/Button'
 import { Section } from '@/components/atoms/Section'
 import { Subtitle } from '@/components/atoms/Subtitle'

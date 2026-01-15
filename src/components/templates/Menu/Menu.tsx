@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 
-import menuHeroBg from '@/assets/history_interior.png'
+import menuHeroBg from '@/assets/history_interior.webp'
 import { Section } from '@/components/atoms/Section'
 import Layout from '@/components/templates/Layout/Layout'
 import { categories, menuItems } from '@/data/menu'

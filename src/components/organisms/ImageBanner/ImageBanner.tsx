@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import coffeeImg from '@/assets/coffee.png'
+import coffeeImg from '@/assets/coffee.webp'
 
 const Banner = styled.div`
   height: 400px;

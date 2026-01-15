@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 
-import heroImg from '@/assets/hero.png'
+import heroImg from '@/assets/hero.webp'
 import { Button } from '@/components/atoms/Button'
 import { Subtitle } from '@/components/atoms/Subtitle'
 

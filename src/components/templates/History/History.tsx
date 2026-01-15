@@ -1,8 +1,8 @@
 import styled, { keyframes } from 'styled-components'
 
-import exteriorImg from '@/assets/history_exterior.png'
-import interiorImg from '@/assets/history_interior.png'
-import peopleImg from '@/assets/history_people.png'
+import exteriorImg from '@/assets/history_exterior.webp'
+import interiorImg from '@/assets/history_interior.webp'
+import peopleImg from '@/assets/history_people.webp'
 import { Section } from '@/components/atoms/Section'
 import { Subtitle } from '@/components/atoms/Subtitle'
 import Layout from '@/components/templates/Layout/Layout'
@@ -162,7 +162,7 @@ const History = () => {
               />
             </ImageWrapper>
             <TextContent>
-              <Subtitle>2019</Subtitle>
+              <Subtitle>1925</Subtitle>
               <h3>Пекарня у воды</h3>
               <p>
                 Мы открылись в Ижевске на набережной Ижевского пруда. Здесь

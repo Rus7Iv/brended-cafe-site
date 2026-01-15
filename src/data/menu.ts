@@ -1,5 +1,5 @@
-import breadImg from '@/assets/bread.png'
-import coffeeImg from '@/assets/coffee.png'
+import breadImg from '@/assets/bread.webp'
+import coffeeImg from '@/assets/coffee.webp'
 const pastryImg = breadImg // Placeholder until we have a pastry image
 
 export type MenuItem = {
