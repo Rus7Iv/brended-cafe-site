@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import HistoryPage from '@/pages/HistoryPage'
 import HomePage from '@/pages/HomePage'
 import MenuPage from '@/pages/MenuPage'
+import NotFoundPage from '@/pages/NotFoundPage'
 
 const routes = [
   {
@@ -16,6 +17,10 @@ const routes = [
   {
     path: '/menu',
     element: <MenuPage />,
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />,
   },
 ]
 
