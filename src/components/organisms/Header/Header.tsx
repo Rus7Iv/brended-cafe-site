@@ -205,15 +205,15 @@ export const Header = () => {
           Хлеб & Соль
         </Logo>
         <Nav id="primary-navigation" $scrolled={scrolled} $open={menuOpen}>
-          <a href="/#about" onClick={handleNavClick}>
+          <Link to="/#about" onClick={handleNavClick}>
             О нас
-          </a>
-          <a href="/menu" onClick={handleNavClick}>
+          </Link>
+          <Link to="/menu" onClick={handleNavClick}>
             Меню
-          </a>
-          <a href="#contact" onClick={handleNavClick}>
+          </Link>
+          <Link to="/#contact" onClick={handleNavClick}>
             Контакты
-          </a>
+          </Link>
         </Nav>
         <MenuButton
           type="button"
