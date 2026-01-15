@@ -188,8 +188,6 @@ const Card = styled.div<{ $index: number }>`
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
-  animation: ${fadeIn} 0.6s ease backwards;
-  animation-delay: ${({ $index }) => `${$index * 100}ms`};
   border: 1px solid rgba(0, 0, 0, 0.03);
 
   /* Glass/Shadow Effect */
@@ -280,7 +278,7 @@ const Menu = () => {
 
           <StaggeredGrid>
             {filteredItems.map((item, index) => (
-              <Card key={item.id} $index={index}>
+              <Card key={item.id} $index={index} data-reveal>
                 <PriceTag>{item.price}</PriceTag>
                 <CardImage>
                   <img src={item.image} alt={item.title} />

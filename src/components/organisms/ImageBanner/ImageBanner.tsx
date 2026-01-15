@@ -32,7 +32,7 @@ const Banner = styled.div`
 
 export const ImageBanner = () => {
   return (
-    <Banner>
+    <Banner data-reveal>
       <h2>Кофе и Атмосфера</h2>
     </Banner>
   )

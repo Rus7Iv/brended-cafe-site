@@ -40,7 +40,7 @@ const Description = styled.p`
 
 export const MenuCard = ({ price, title, description }: MenuCardProps) => {
   return (
-    <Card>
+    <Card data-reveal>
       <Price>{price}</Price>
       <Title>{title}</Title>
       <Description>{description}</Description>

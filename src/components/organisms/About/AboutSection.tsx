@@ -85,7 +85,7 @@ const StoryButton = styled(Button)`
 
 export const AboutSection = () => {
   return (
-    <Section id="about">
+    <Section id="about" data-reveal>
       <SplitSection>
         <TextBlock>
           <AboutSubtitle>Наша философия</AboutSubtitle>

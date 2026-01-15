@@ -66,22 +66,6 @@ const HistoryGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 6rem;
-
-  & > div {
-    animation: ${fadeUp} 0.8s ease both;
-  }
-
-  & > div:nth-child(1) {
-    animation-delay: 0.2s;
-  }
-
-  & > div:nth-child(2) {
-    animation-delay: 0.35s;
-  }
-
-  & > div:nth-child(3) {
-    animation-delay: 0.5s;
-  }
 `
 
 const HistoryBlock = styled.div<{ $reverse?: boolean }>`
@@ -154,7 +138,7 @@ const History = () => {
       </HistoryHero>
       <HistorySection id="about">
         <HistoryGrid>
-          <HistoryBlock>
+          <HistoryBlock data-reveal>
             <ImageWrapper>
               <img
                 src={exteriorImg}
@@ -178,7 +162,7 @@ const History = () => {
             </TextContent>
           </HistoryBlock>
 
-          <HistoryBlock $reverse>
+          <HistoryBlock $reverse data-reveal>
             <ImageWrapper>
               <img src={interiorImg} alt="Интерьер пекарни в Ижевске" />
             </ImageWrapper>
@@ -198,7 +182,7 @@ const History = () => {
             </TextContent>
           </HistoryBlock>
 
-          <HistoryBlock>
+          <HistoryBlock data-reveal>
             <ImageWrapper>
               <img src={peopleImg} alt="Гости на террасе пекарни" />
             </ImageWrapper>

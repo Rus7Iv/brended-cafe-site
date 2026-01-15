@@ -50,6 +50,28 @@ const GlobalStyles = createGlobalStyle`
     display: block;
   }
 
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+    will-change: opacity, transform;
+  }
+
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
   @media ${({ theme }) => theme.media.downMd} {
     * {
       -webkit-tap-highlight-color: transparent;

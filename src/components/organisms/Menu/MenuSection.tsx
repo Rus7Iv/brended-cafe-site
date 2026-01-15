@@ -36,7 +36,7 @@ export const MenuSection = () => {
   const teaserItems = menuItems.slice(0, 3)
 
   return (
-    <Section id="menu">
+    <Section id="menu" data-reveal>
       <SectionTitle>Зимнее Меню</SectionTitle>
       <MenuDescription>
         Согревающие напитки и свежая выпечка, созданные для уютных моментов.
